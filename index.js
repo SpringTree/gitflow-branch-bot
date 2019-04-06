@@ -1,25 +1,4 @@
-/**
- * Name validity check
- *
- * @param {*} branchName The branch name to check
- * @returns boolean
- */
-const branchNameValid = ( branchName ) => {
-  if (
-    branchName.startsWith( 'feature/' )
-    || branchName.startsWith( 'release/' )
-    || branchName.startsWith( 'hotfix/' )
-    || branchName.startsWith( 'experiment/' )
-    || branchName.startsWith( 'fix/' )
-    || branchName === 'master'
-    || branchName === 'develop'
-    || branchName === 'experimental'
-  ) {
-    return true;
-  }
-
-  return false;
-};
+const checkGitBranchName = require( '@springtree/check-git-branch-name' );
 
 /**
  * Checks if a pull request branch name is valid according to git flow
@@ -34,14 +13,14 @@ const checkPullRequestValid = async ( context ) => {
 
   // Check if valid
   //
-  const valid = branchNameValid( pullRequest.branchName );
+  const valid = checkGitBranchName( { test: pullRequest.branchName, evenReleases: true } );
 
   // Return status
   //
   await repository.createStatus( {
     ...statusInfo,
     state: valid ? 'success' : 'failure',
-    description: `Branch ${pullRequest.branchName} has ${valid ? 'a valid' : 'an invalid'} git flow branch name`,
+    description: `Branch ${pullRequest.branchName} has ${valid ? 'a valid' : 'an invalid'} git branch name`,
   } );
 };
 

@@ -9,7 +9,7 @@ const checkPullRequestValid = async ( context ) => {
   const repository = context.repo();
   const pullRequest = context.issue();
   const { sha } = context.payload.pull_request.head;
-  const statusInfo = { ...repository, sha, context: 'enforce-gitflow-branch-name' };
+  const statusInfo = { ...repository, sha, context: 'gitflow-branch-bot' };
 
   // Check if valid
   //

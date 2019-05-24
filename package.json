@@ -1,12 +1,12 @@
 {
-  "name": "enforce-gitflow-branch-name-app",
+  "name": "gitflow-branch-bot",
   "version": "1.0.0",
   "description": "A probot app to check branch names match the git flow naming convention",
   "author": "Mark Doeswijk <mark@springtree.nl> (http://www.springtree.eu)",
   "license": "ISC",
-  "repository": "https://github.com//enforce-gitflow-branch-name-app.git",
-  "homepage": "https://github.com//enforce-gitflow-branch-name-app",
-  "bugs": "https://github.com//enforce-gitflow-branch-name-app/issues",
+  "repository": "https://github.com/springtree/gitflow-branch-bot.git",
+  "homepage": "https://github.com/springtree/gitflow-branch-bot",
+  "bugs": "https://github.com/springtree/gitflow-branch-bot/issues",
   "keywords": [
     "probot",
     "github",

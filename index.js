@@ -16,10 +16,11 @@ const checkPullRequestValid = async ( context ) => {
 
   // Return status
   //
-  await repository.createStatus( {
+  const message = `Branch ${ref} has ${valid ? 'a valid' : 'an invalid'} git branch name`;
+  await context.github.repos.createStatus( {
     ...statusInfo,
     state: valid ? 'success' : 'failure',
-    description: `Branch ${ref} has ${valid ? 'a valid' : 'an invalid'} git branch name`,
+    description: message,
   } );
 };
 
@@ -32,5 +33,6 @@ module.exports = ( app ) => {
   // Setup check for pull request events
   //
   app.on( 'pull_request.opened', checkPullRequestValid );
+  app.on( 'pull_request.reopened', checkPullRequestValid );
   app.on( 'pull_request.synchronize', checkPullRequestValid );
 };

@@ -7,20 +7,19 @@ const checkGitBranchName = require( '@springtree/check-git-branch-name' );
  */
 const checkPullRequestValid = async ( context ) => {
   const repository = context.repo();
-  const pullRequest = context.issue();
-  const { sha } = context.payload.pull_request.head;
+  const { sha, ref } = context.payload.pull_request.head;
   const statusInfo = { ...repository, sha, context: 'gitflow-branch-bot' };
 
   // Check if valid
   //
-  const valid = checkGitBranchName( { test: pullRequest.branchName, evenReleases: false } );
+  const valid = ref ? checkGitBranchName( { test: ref, evenReleases: false } ) : true;
 
   // Return status
   //
   await repository.createStatus( {
     ...statusInfo,
     state: valid ? 'success' : 'failure',
-    description: `Branch ${pullRequest.branchName} has ${valid ? 'a valid' : 'an invalid'} git branch name`,
+    description: `Branch ${ref} has ${valid ? 'a valid' : 'an invalid'} git branch name`,
   } );
 };
 

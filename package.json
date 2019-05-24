@@ -18,7 +18,8 @@
     "start": "probot run ./index.js",
     "lint": "standard --fix",
     "test": "jest && standard",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
+    "deploy:gcf": "gcloud functions deploy gitflowbranch --env-vars-file .env.yaml --trigger-http --runtime nodejs8"
   },
   "dependencies": {
     "@probot/serverless-gcf": "^0.2.0",

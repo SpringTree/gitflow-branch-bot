@@ -2,6 +2,7 @@
   "name": "gitflow-branch-bot",
   "version": "1.0.0",
   "description": "A probot app to check branch names match the git flow naming convention",
+  "main": "handler.js",
   "author": "Mark Doeswijk <mark@springtree.nl> (http://www.springtree.eu)",
   "license": "ISC",
   "repository": "https://github.com/springtree/gitflow-branch-bot.git",

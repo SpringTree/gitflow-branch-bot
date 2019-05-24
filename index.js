@@ -13,7 +13,7 @@ const checkPullRequestValid = async ( context ) => {
 
   // Check if valid
   //
-  const valid = checkGitBranchName( { test: pullRequest.branchName, evenReleases: true } );
+  const valid = checkGitBranchName( { test: pullRequest.branchName, evenReleases: false } );
 
   // Return status
   //

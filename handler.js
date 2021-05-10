@@ -13,7 +13,7 @@
 // Deploy with command:
 // gcloud functions deploy gitflowbranch --env-vars-file .env.yaml --trigger-http --runtime nodejs8
 //
-const { serverless } = require( '@probot/serverless-gcf' );
-const appFn = require( './index.js' );
+const { serverless } = require('@probot/serverless-gcf')
+const appFn = require('./index.js')
 
-module.exports.gitflowbranch = serverless( appFn );
+module.exports.gitflowbranch = serverless(appFn)
